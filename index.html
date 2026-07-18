@@ -1,0 +1,1544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EGLE Motors &mdash; Staff Training Portal</title>
+<meta name="description" content="Staff guide to the Egle Motors applications: what each app is for, who uses it, and the steps for everyday tasks.">
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<style>
+  *,*::before,*::after{box-sizing:border-box}
+  body{margin:0}
+  img{max-width:100%;height:auto}
+</style>
+</head>
+<body>
+<style>
+  :root{
+    --ground:#FBF9F8;
+    --panel:#FFFFFF;
+    --ink:#1A1614;
+    --mid:#6E6360;
+    --faint:#9A908C;
+    --line:#E6DEDA;
+    --line-soft:#F0EAE7;
+    --accent:#CC191D;
+    --accent-soft:#FCEFEF;
+    --warn:#B26A00;
+    --warn-soft:#FDF3E2;
+    --stop:#8E2A2A;
+    --ok:#2F6B4F;
+    --ok-soft:#EDF5F0;
+    --slate:#5B6570;
+    --slate-soft:#EFF2F4;
+
+    --sans:ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Charter,Georgia,"Times New Roman",serif;
+    --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+
+    --rail:268px;
+  }
+
+  @media (prefers-color-scheme: dark){
+    :root{
+      --ground:#141110;
+      --panel:#1C1817;
+      --ink:#F2EDEA;
+      --mid:#B0A5A0;
+      --faint:#7E736F;
+      --line:#332C29;
+      --line-soft:#262120;
+      --accent:#F2565A;
+      --accent-soft:#2E1A1A;
+      --warn:#E5A54A;
+      --warn-soft:#2A2115;
+      --stop:#F08A8A;
+      --ok:#6FBF95;
+      --ok-soft:#152520;
+      --slate:#9AA6B2;
+      --slate-soft:#1E2428;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#141110;
+    --panel:#1C1817;
+    --ink:#F2EDEA;
+    --mid:#B0A5A0;
+    --faint:#7E736F;
+    --line:#332C29;
+    --line-soft:#262120;
+    --accent:#F2565A;
+    --accent-soft:#2E1A1A;
+    --warn:#E5A54A;
+    --warn-soft:#2A2115;
+    --stop:#F08A8A;
+    --ok:#6FBF95;
+    --ok-soft:#152520;
+    --slate:#9AA6B2;
+    --slate-soft:#1E2428;
+  }
+  :root[data-theme="light"]{
+    --ground:#FBF9F8;
+    --panel:#FFFFFF;
+    --ink:#1A1614;
+    --mid:#6E6360;
+    --faint:#9A908C;
+    --line:#E6DEDA;
+    --line-soft:#F0EAE7;
+    --accent:#CC191D;
+    --accent-soft:#FCEFEF;
+    --warn:#B26A00;
+    --warn-soft:#FDF3E2;
+    --stop:#8E2A2A;
+    --ok:#2F6B4F;
+    --ok-soft:#EDF5F0;
+    --slate:#5B6570;
+    --slate-soft:#EFF2F4;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:var(--serif);
+    font-size:17px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .layout{display:flex;align-items:flex-start;}
+
+  /* ---------- rail ---------- */
+  .rail{
+    width:var(--rail);
+    flex:0 0 var(--rail);
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
+    border-right:1px solid var(--line);
+    background:var(--panel);
+    padding:28px 0 40px;
+  }
+  .rail-brand{
+    padding:0 22px 20px;
+    border-bottom:1px solid var(--line-soft);
+    margin-bottom:18px;
+  }
+  .rail-mark{
+    font-family:var(--sans);
+    font-weight:800;
+    font-size:12px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:block;
+  }
+  .rail-title{
+    font-family:var(--sans);
+    font-weight:600;
+    font-size:15px;
+    letter-spacing:-.01em;
+    margin-top:5px;
+    display:block;
+    line-height:1.3;
+  }
+  .rail-group{
+    font-family:var(--sans);
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.15em;
+    text-transform:uppercase;
+    color:var(--faint);
+    padding:18px 22px 7px;
+  }
+  .rail a{
+    display:flex;
+    align-items:baseline;
+    gap:9px;
+    padding:6px 22px;
+    color:var(--mid);
+    text-decoration:none;
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.45;
+    border-left:2px solid transparent;
+  }
+  .rail a:hover{color:var(--ink);background:var(--line-soft);}
+  .rail a.on{color:var(--ink);border-left-color:var(--accent);font-weight:600;}
+  .rail a:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
+  .rail .n{
+    font-family:var(--mono);
+    font-size:10px;
+    color:var(--faint);
+    flex:0 0 auto;
+  }
+
+  /* ---------- main ---------- */
+  main{
+    flex:1 1 auto;
+    min-width:0;
+    padding:0 0 120px;
+  }
+  .wrap{max-width:760px;margin:0 auto;padding:0 40px;}
+
+  .masthead{
+    border-bottom:1px solid var(--line);
+    background:var(--panel);
+    padding:64px 0 44px;
+    margin-bottom:52px;
+  }
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--accent);
+  }
+  h1{
+    font-family:var(--sans);
+    font-size:38px;
+    line-height:1.12;
+    letter-spacing:-.025em;
+    font-weight:700;
+    margin:14px 0 0;
+    text-wrap:balance;
+  }
+  .standfirst{
+    font-size:19px;
+    color:var(--mid);
+    margin:18px 0 0;
+    max-width:60ch;
+  }
+
+  h2{
+    font-family:var(--sans);
+    font-size:27px;
+    letter-spacing:-.02em;
+    font-weight:700;
+    margin:0 0 4px;
+    text-wrap:balance;
+  }
+  h3{
+    font-family:var(--sans);
+    font-size:15px;
+    font-weight:700;
+    letter-spacing:.01em;
+    margin:34px 0 10px;
+  }
+  h4{
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin:26px 0 8px;
+  }
+  p{margin:0 0 14px;}
+  a{color:var(--accent);}
+
+  section.app{
+    padding-top:34px;
+    margin-bottom:14px;
+    border-top:1px solid var(--line);
+  }
+  section.app:first-of-type{border-top:none;}
+  .app-kicker{
+    font-family:var(--sans);
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin-bottom:9px;
+  }
+  .purpose{
+    font-size:18.5px;
+    color:var(--mid);
+    margin:10px 0 22px;
+  }
+
+  /* fact strip */
+  .facts{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:3px;
+    overflow:hidden;
+    margin:22px 0 28px;
+  }
+  .fact{background:var(--panel);padding:12px 14px;}
+  .fact dt{
+    font-family:var(--sans);
+    font-size:10px;
+    font-weight:700;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--faint);
+    margin-bottom:4px;
+  }
+  .fact dd{
+    margin:0;
+    font-family:var(--sans);
+    font-size:13.5px;
+    line-height:1.4;
+  }
+
+  /* literal UI strings */
+  .ui{
+    font-family:var(--sans);
+    font-size:.87em;
+    font-weight:600;
+    background:var(--line-soft);
+    border:1px solid var(--line);
+    border-radius:3px;
+    padding:1px 5px;
+    white-space:nowrap;
+  }
+  code{font-family:var(--mono);font-size:.85em;background:var(--line-soft);padding:1px 4px;border-radius:3px;}
+
+  /* tables */
+  .scroll{overflow-x:auto;margin:14px 0 20px;border:1px solid var(--line);border-radius:3px;}
+  table{border-collapse:collapse;width:100%;font-family:var(--sans);font-size:13.5px;background:var(--panel);}
+  th{
+    text-align:left;
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--faint);
+    padding:9px 13px;
+    border-bottom:1px solid var(--line);
+    white-space:nowrap;
+  }
+  td{padding:9px 13px;border-bottom:1px solid var(--line-soft);vertical-align:top;line-height:1.45;}
+  tr:last-child td{border-bottom:none;}
+  td.num{font-variant-numeric:tabular-nums;}
+
+  /* steps */
+  ol.steps{margin:12px 0 20px;padding-left:0;list-style:none;counter-reset:s;}
+  ol.steps li{
+    counter-increment:s;
+    position:relative;
+    padding-left:38px;
+    margin-bottom:11px;
+  }
+  ol.steps li::before{
+    content:counter(s);
+    position:absolute;left:0;top:1px;
+    width:24px;height:24px;
+    border-radius:50%;
+    background:var(--accent-soft);
+    color:var(--accent);
+    font-family:var(--sans);
+    font-size:11.5px;
+    font-weight:700;
+    display:flex;align-items:center;justify-content:center;
+  }
+  ul.plain{margin:10px 0 18px;padding-left:20px;}
+  ul.plain li{margin-bottom:7px;}
+
+  /* callouts */
+  .note{
+    border-left:3px solid var(--line);
+    background:var(--panel);
+    padding:13px 16px;
+    margin:18px 0;
+    font-size:16px;
+  }
+  .note p:last-child{margin-bottom:0;}
+  .note .lbl{
+    font-family:var(--sans);
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.11em;
+    text-transform:uppercase;
+    display:block;
+    margin-bottom:5px;
+  }
+  .note.warn{border-left-color:var(--warn);background:var(--warn-soft);}
+  .note.warn .lbl{color:var(--warn);}
+  .note.stop{border-left-color:var(--stop);background:var(--accent-soft);}
+  .note.stop .lbl{color:var(--stop);}
+  .note.ok{border-left-color:var(--ok);background:var(--ok-soft);}
+  .note.ok .lbl{color:var(--ok);}
+  .note.info{border-left-color:var(--slate);background:var(--slate-soft);}
+  .note.info .lbl{color:var(--slate);}
+
+  /* status chips */
+  .chip{
+    font-family:var(--sans);
+    font-size:10.5px;
+    font-weight:700;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:2px 7px;
+    border-radius:2px;
+    white-space:nowrap;
+  }
+  .chip.live{background:var(--ok-soft);color:var(--ok);}
+  .chip.part{background:var(--warn-soft);color:var(--warn);}
+  .chip.sim{background:var(--accent-soft);color:var(--stop);}
+
+  /* glossary */
+  details.gloss{
+    border:1px solid var(--line);
+    border-radius:3px;
+    margin:20px 0 8px;
+    background:var(--panel);
+  }
+  details.gloss summary{
+    cursor:pointer;
+    padding:11px 16px;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.09em;
+    text-transform:uppercase;
+    color:var(--mid);
+    list-style:none;
+  }
+  details.gloss summary::-webkit-details-marker{display:none;}
+  details.gloss summary::before{content:"\25B8 \0020";color:var(--accent);}
+  details.gloss[open] summary::before{content:"\25BE \0020";}
+  details.gloss summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
+  .gloss-body{padding:2px 16px 14px;border-top:1px solid var(--line-soft);}
+  .gloss-body dl{margin:12px 0 0;}
+  .gloss-body dt{
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:700;
+    margin-top:11px;
+  }
+  .gloss-body dd{margin:2px 0 0;font-size:16px;color:var(--mid);}
+
+  hr.rule{border:none;border-top:1px solid var(--line);margin:44px 0;}
+
+  .toplink{
+    font-family:var(--sans);
+    font-size:11.5px;
+    color:var(--faint);
+    text-decoration:none;
+    display:inline-block;
+    margin-top:8px;
+  }
+  .toplink:hover{color:var(--accent);}
+
+  @media (max-width:900px){
+    .layout{display:block;}
+    .rail{
+      position:static;width:auto;height:auto;
+      border-right:none;border-bottom:1px solid var(--line);
+      padding:20px 0;
+    }
+    .wrap{padding:0 22px;}
+    h1{font-size:30px;}
+    .masthead{padding:40px 0 30px;}
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{animation:none!important;transition:none!important;scroll-behavior:auto!important;}
+  }
+  :target{scroll-margin-top:24px;}
+</style>
+
+<div class="layout">
+
+<nav class="rail" aria-label="Applications">
+  <div class="rail-brand">
+    <span class="rail-mark">Egle Motors</span>
+    <span class="rail-title">Staff Training Portal</span>
+  </div>
+
+  <div class="rail-group">Start here</div>
+  <a href="#start"><span class="n">00</span> Signing in &amp; the hub</a>
+  <a href="#ops"><span class="n">01</span> Operations Hub</a>
+
+  <div class="rail-group">Selling a vehicle</div>
+  <a href="#sales"><span class="n">02</span> Sales</a>
+  <a href="#pricing"><span class="n">03</span> Pricing</a>
+  <a href="#pdi"><span class="n">04</span> PDI</a>
+
+  <div class="rail-group">Getting paid</div>
+  <a href="#cashier"><span class="n">05</span> Cashier</a>
+  <a href="#collections"><span class="n">06</span> Collections</a>
+  <a href="#receivables"><span class="n">07</span> Receivables</a>
+  <a href="#csa"><span class="n">08</span> CSA &amp; WNP</a>
+
+  <div class="rail-group">Workshop &amp; stock</div>
+  <a href="#service"><span class="n">09</span> Service</a>
+  <a href="#parts"><span class="n">10</span> Parts</a>
+  <a href="#purchasing"><span class="n">11</span> Purchasing</a>
+
+  <div class="rail-group">Running the business</div>
+  <a href="#staff"><span class="n">12</span> Staff</a>
+  <a href="#compliance"><span class="n">13</span> Compliance</a>
+  <a href="#tasks"><span class="n">14</span> Tasks</a>
+
+  <div class="rail-group">Reference</div>
+  <a href="#quirks">Known quirks</a>
+  <a href="#glossary">Group glossary</a>
+</nav>
+
+<main>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="eyebrow">Internal &middot; 14 applications</div>
+    <h1>How to use the Egle Motors system</h1>
+    <p class="standfirst">A practical guide to every app in the group &mdash; what each one is for, who works in it,
+    and the exact steps for the jobs you do every day.</p>
+  </div>
+</header>
+
+<div class="wrap">
+
+<!-- ============ START HERE ============ -->
+<section class="app" id="start">
+  <div class="app-kicker">Start here</div>
+  <h2>Signing in, and how the apps fit together</h2>
+  <p class="purpose">You have one login for everything. Sign in once at the hub and every app you're
+  allowed to use opens without asking again.</p>
+
+  <h3>Your one login</h3>
+  <p>Go to <strong>agcmotors.com</strong> and sign in with your work email and password. You land on
+  <strong>Your apps</strong> &mdash; a grid of tiles. Click a tile to open that app; you're already signed in
+  when you arrive.</p>
+
+  <div class="note info">
+    <span class="lbl">If a tile is missing</span>
+    <p>You only see the apps you've been granted. A missing tile means missing access, not a broken app &mdash;
+    ask an administrator to add it in the Staff app. <strong>Tasks</strong> is the one app everybody gets
+    and it can't be removed.</p>
+  </div>
+
+  <div class="note warn">
+    <span class="lbl">Five wrong attempts locks you out</span>
+    <p>After five failed sign-ins your account locks for <strong>15 minutes</strong>. Waiting is the only
+    cure &mdash; or an administrator can reset your password, which clears the lock. A successful sign-in resets
+    the counter.</p>
+  </div>
+
+  <p><span class="ui">Log Out</span> signs you out of <em>every</em> app at once, not just the one you're
+  looking at. On a shared machine, always use it rather than closing the tab.</p>
+
+  <h3>Where work hands over between apps</h3>
+  <p>Most confusion at Egle comes from doing a job in the wrong app. The handover points:</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>The job</th><th>Happens in</th><th>Not in</th></tr></thead>
+    <tbody>
+      <tr><td>Creating a customer, deal or agreement</td><td>Sales</td><td>CSA&nbsp;&amp;&nbsp;WNP, Receivables</td></tr>
+      <tr><td>Taking money and printing a receipt</td><td>Cashier</td><td>Sales, Parts</td></tr>
+      <tr><td>Chasing an overdue customer</td><td>Collections</td><td>CSA&nbsp;&amp;&nbsp;WNP</td></tr>
+      <tr><td>Creating a part in the catalogue</td><td>Purchasing</td><td>Parts</td></tr>
+      <tr><td>Setting a selling price</td><td>Pricing</td><td>Parts, Service</td></tr>
+      <tr><td>Booking stock in when it arrives</td><td>Parts</td><td>Purchasing</td></tr>
+      <tr><td>The pre-delivery checklist itself</td><td>Service <em>or</em> PDI</td><td>Sales</td></tr>
+      <tr><td>Granting someone access to an app</td><td>Staff</td><td>Operations Hub</td></tr>
+      <tr><td>System settings and exchange rates</td><td>Operations Hub</td><td>Staff</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ OPS HUB ============ -->
+<section class="app" id="ops">
+  <div class="app-kicker">01 &middot; Start here</div>
+  <h2>Operations Hub</h2>
+  <p class="purpose">The front door. Launches every other app, and holds the settings the rest of the
+  system reads.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Everybody, every day</dd></div>
+    <div class="fact"><dt>Admin areas</dt><dd>Managers &amp; admins only</dd></div>
+    <div class="fact"><dt>Address</dt><dd>agcmotors.com</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <h3>Screens</h3>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Screen</th><th>What it's for</th><th>Who</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Your apps</strong></td><td>The tile grid. Click to open an app.</td><td>Everyone</td></tr>
+      <tr><td><strong>Executive Dashboard</strong></td><td>Group KPIs &mdash; portfolio risk, collections rate, sales conversion, cash position.</td><td>Admins</td></tr>
+      <tr><td><strong>Exchange Rates</strong></td><td>USD and Ghana Cedi rates, with a dated history.</td><td>Admins</td></tr>
+      <tr><td><strong>Agreement Settings</strong></td><td>Interest, minimum deposit, commission, grace days, late fee and settlement rebate &mdash; separately for CSA and WNP.</td><td>Admins</td></tr>
+      <tr><td><strong>Configuration</strong></td><td>Installment plans, commission rules, warranty plans, repair task templates, locations.</td><td>Admins</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Updating an exchange rate</h3>
+  <ol class="steps">
+    <li>Sidebar &rarr; <span class="ui">Exchange Rates</span>.</li>
+    <li>In the <strong>US Dollar</strong> section, type the new figures against GHS, GBP or EUR. Blank rows are left alone. Press <span class="ui">Save rates</span>.</li>
+    <li>In the <strong>Ghana Cedi</strong> section, choose the currency, enter GHS per 1 unit and an <strong>Effective date</strong>, then <span class="ui">Add rate</span>.</li>
+    <li>Check the <strong>Current rate per currency</strong> cards show what you expect.</li>
+  </ol>
+  <p>Rates are <em>dated</em>, not overwritten. The current rate is the newest one dated today or earlier,
+  and each payment freezes the rate it used &mdash; so history never shifts under you.</p>
+
+  <div class="note warn">
+    <span class="lbl">Access denied gives no explanation</span>
+    <p>If you follow a direct link into an app you don't have access to, you're bounced back to
+    <strong>Your apps</strong> with <em>no message</em> telling you why. If a link seems to do nothing,
+    that's what happened &mdash; ask for access rather than retrying.</p>
+  </div>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ SALES ============ -->
+<section class="app" id="sales">
+  <div class="app-kicker">02 &middot; Selling a vehicle</div>
+  <h2>Sales</h2>
+  <p class="purpose">From first enquiry to handing over the keys. Every vehicle sale is built here, and
+  every credit agreement in the business starts here.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Salespeople, Commercial Manager, Receivables, Compliance, PDI</dd></div>
+    <div class="fact"><dt>Currency</dt><dd>Ghana Cedi (GH&#8373;)</dd></div>
+    <div class="fact"><dt>Reports</dt><dd>Administrators only</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <h3>The eight stages</h3>
+  <p>Every deal walks the same path. Each stage belongs to one department &mdash; you can only act when the deal
+  is at <em>your</em> stage; otherwise you see &ldquo;Waiting on &lt;department&gt;&rdquo;.</p>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>#</th><th>Stage</th><th>Owned by</th><th>Target</th></tr></thead>
+    <tbody>
+      <tr><td class="num">1</td><td>Opportunity</td><td>Sales</td><td class="num">3 days</td></tr>
+      <tr><td class="num">2</td><td>Vehicle Selection</td><td>PDI</td><td class="num">2 days</td></tr>
+      <tr><td class="num">3</td><td>Pre-Delivery Inspection</td><td>PDI</td><td class="num">2 days</td></tr>
+      <tr><td class="num">4</td><td>Insurance &amp; DVLA</td><td>Compliance</td><td class="num">3 days</td></tr>
+      <tr><td class="num">5</td><td>Contract</td><td>Commercial Manager</td><td class="num">2 days</td></tr>
+      <tr><td class="num">6</td><td>Contract Executed</td><td>Commercial Manager</td><td class="num">2 days</td></tr>
+      <tr><td class="num">7</td><td>Entries &amp; Invoice</td><td>Receivables</td><td class="num">2 days</td></tr>
+      <tr><td class="num">8</td><td>Vehicle Release</td><td>PDI + Sales</td><td class="num">2 days</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Selling a vehicle, start to finish</h3>
+  <ol class="steps">
+    <li><strong>Log the lead.</strong> <span class="ui">+ New Lead</span> &rarr; first name, last name and an assigned
+    salesperson are required. Log every walk-in, whether or not they buy.</li>
+    <li><strong>Quote it (optional).</strong> Quotations &rarr; <span class="ui">New quotation</span> &rarr; price, deposit,
+    term, rate. Present it, then convert &mdash; the opportunity arrives pre-filled. Remember the quote is
+    <em>financials only</em>: it excludes insurance, DVLA and extras.</li>
+    <li><strong>Open the opportunity</strong> from the lead, then fill the Opportunity stage: agreement type
+    (CSA or WNP), vehicle, deposit, term, frequency, first repayment date. Watch the deposit warning &mdash;
+    below the policy minimum it says &ldquo;&mdash; below policy&rdquo;. Check the <strong>Affordability</strong> badge.</li>
+    <li><strong>Vehicle Selection.</strong> PDI allocates a physical vehicle from stock.</li>
+    <li><strong>Pre-Delivery Inspection.</strong> The checklist is done in the Service app; the result appears
+    here as a pass/fail card. Nothing to type.</li>
+    <li><strong>Insurance &amp; DVLA.</strong> Compliance enters insurer, policy number, cover and the
+    registration number.</li>
+    <li><strong>Contract.</strong> The Commercial Manager finalises terms and completes the legal fields &mdash;
+    buyer details, and the guarantor block if <span class="ui">Include a guarantor</span> is ticked. Then
+    <span class="ui">Generate agreement</span> and use the <strong>Deal jacket</strong> to upload the Ghana Card
+    and capture the customer's signature.</li>
+    <li><strong>Contract Executed</strong> &rarr; execution date and who was present.</li>
+    <li><strong>Entries &amp; Invoice.</strong> Receivables records the deposit and payment date. The repayment
+    schedule and the purchase reference are generated here.</li>
+    <li><strong>Vehicle Release.</strong> Release date plus a handover photo, then
+    <span class="ui">Complete &amp; release</span>. The lead becomes a customer.</li>
+  </ol>
+
+  <div class="note stop">
+    <span class="lbl">Two hard blocks on release</span>
+    <p>The vehicle cannot be released until <strong>the first payment is recorded</strong> and
+    <strong>the full deposit is collected</strong> &mdash; deposits payable in parts must be complete. The app will
+    not let you past this, and it is not a bug.</p>
+  </div>
+
+  <h3>Other things you'll do here</h3>
+  <ul class="plain">
+    <li><strong>Desking</strong> &mdash; build and compare deal scenarios side by side (CSA vs WNP, different terms
+    and deposits), then <span class="ui">Accept</span> the one the customer wants.</li>
+    <li><strong>Trade-in</strong> &mdash; appraise a part-exchange, send the allowance for approval, then accept it
+    into used inventory.</li>
+    <li><strong>F&amp;I</strong> &mdash; finance reserve, add-on products and deposits. Deposits already held can be
+    applied, refunded or forfeited.</li>
+    <li><strong>Block a lead</strong> &mdash; Receivables can block a customer with an outstanding balance, which
+    stops any new opportunity until they're unblocked.</li>
+    <li><strong>Mark lost</strong> &mdash; with a reason. This frees the reserved vehicle back into stock.</li>
+  </ul>
+
+  <details class="gloss">
+    <summary>Sales glossary</summary>
+    <div class="gloss-body"><dl>
+      <dt>Lead &rarr; Opportunity &rarr; Customer</dt><dd>A lead is any enquiry. An opportunity is an active deal. A customer is a lead who completed a purchase.</dd>
+      <dt>CSA &mdash; Credit Sale Agreement</dt><dd>The customer buys on credit and owns the vehicle, paying in installments. Terms of 6, 12 or 24 months; weekly or monthly.</dd>
+      <dt>WNP &mdash; Work and Pay</dt><dd>The customer works with the vehicle and pays from earnings; ownership transfers at the end. Terms up to 60 months, <strong>weekly only</strong>.</dd>
+      <dt>Affordability</dt><dd>Affordable / Caution / High risk, based on the installment as a share of monthly income &mdash; caution at 30%, high risk above 45%.</dd>
+      <dt>Front gross / Back gross</dt><dd>Front is the margin on the vehicle itself. Back is finance reserve plus product margin.</dd>
+      <dt>Deal jacket</dt><dd>The permanent folder of contract, ID documents and signature. Signed documents can't be altered afterwards.</dd>
+      <dt>SLA / aging</dt><dd>The target days for each stage. Deals show On track, Due or Over SLA.</dd>
+      <dt>Reference formats</dt><dd>Lead <code>MA-202607-001</code> &middot; Opportunity <code>OPP-2026-014</code> &middot; Agreement <code>CSA-MA-202607-014</code>.</dd>
+    </dl></div>
+  </details>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section class="app" id="pricing">
+  <div class="app-kicker">03 &middot; Selling a vehicle</div>
+  <h2>Pricing</h2>
+  <p class="purpose">The single place selling prices are set &mdash; labour rates and part prices. Sales, Service
+  and Parts all read from here automatically.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Everyone can look up; admins set prices</dd></div>
+    <div class="fact"><dt>Currency</dt><dd>Ghana Cedi (GH&#8373;)</dd></div>
+    <div class="fact"><dt>Read-only users</dt><dd>Marked &ldquo;&middot; read-only&rdquo; in the sidebar</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <div class="note info">
+    <span class="lbl">Nothing is ever overwritten</span>
+    <p>Setting a new price doesn't replace the old one &mdash; it closes the old row with an end date and opens a
+    new one. That's why every history table reads &ldquo;01 Jan 2026 &ndash; present&rdquo; and the live row is tagged
+    <strong>current</strong>. You can also date a change <em>forward</em>.</p>
+  </div>
+
+  <h3>Changing one part's price</h3>
+  <ol class="steps">
+    <li><span class="ui">Part Prices</span> &rarr; search by name, SKU or OEM number.</li>
+    <li>Click <span class="ui">Set / history</span>.</li>
+    <li>Choose the price type &mdash; <strong>retail</strong>, <strong>workshop</strong> or <strong>trade</strong> &mdash; enter the
+    price and an effective date, then <span class="ui">Set price</span>.</li>
+  </ol>
+
+  <h3>Changing many prices at once</h3>
+  <ol class="steps">
+    <li><span class="ui">Bulk Update</span> &rarr; <span class="ui">&darr; Download CSV template</span>.</li>
+    <li>Fill it in Excel, then <strong>save as CSV</strong> &mdash; not .xlsx. The app will reject a spreadsheet file.</li>
+    <li>Upload &rarr; <span class="ui">Validate</span>. Bad rows are listed with the reason.</li>
+    <li><span class="ui">Commit N valid rows</span>. Invalid rows are skipped; the good ones still go through.</li>
+  </ol>
+
+  <h3>Importing a container of stock</h3>
+  <p>This is the longest job in the app, and the one that produces landed costs.</p>
+  <ol class="steps">
+    <li><span class="ui">Price Lists</span> &rarr; <span class="ui">New price list</span> &rarr; name it, choose the kind, set
+    an effective date &rarr; <span class="ui">Create draft list</span>.</li>
+    <li>Open the list &rarr; <span class="ui">Import CSV</span>.</li>
+    <li>Work the four steps: <strong>Upload &rarr; Map columns &rarr; Validate &rarr; Apply</strong>. On the mapping step, tick
+    the container-totals box if your freight and duty figures are for the <em>whole shipment</em> &mdash; the app
+    then spreads them across units pro-rata. Leave it unticked if they're already per-unit.</li>
+    <li>Review the validation report. Fix problems in the sheet and retry if needed.</li>
+    <li>Spot-check the items, correcting any row with <span class="ui">Edit</span>. Landed cost recalculates itself.</li>
+    <li><span class="ui">Publish list</span> and confirm. Prices go live to Sales, Service and Parts, and a
+    published list becomes read-only.</li>
+  </ol>
+
+  <div class="note warn">
+    <span class="lbl">Two imports, two different behaviours</span>
+    <p>The <strong>price list</strong> import is all-or-nothing: if any row fails, nothing is written. The
+    <strong>Bulk Update</strong> import is not: it skips bad rows and commits the rest. Know which one you're using.</p>
+  </div>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ PDI ============ -->
+<section class="app" id="pdi">
+  <div class="app-kicker">04 &middot; Selling a vehicle</div>
+  <h2>PDI &mdash; Pre-Delivery Inspection</h2>
+  <p class="purpose">Two checks: when a vehicle arrives from a supplier, and before it goes to a customer.
+  A passed arrival check is what makes a vehicle sellable.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Inspectors; supervisors maintain checklists</dd></div>
+    <div class="fact"><dt>Permissions</dt><dd>Everyone with access can do everything</dd></div>
+    <div class="fact"><dt>Device</dt><dd>Desktop or landscape tablet &mdash; not phones</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <h3>Arrival inspection</h3>
+  <ol class="steps">
+    <li>Vehicles appear in the <span class="ui">Arrival queue</span> once Purchasing receives them against a PO.</li>
+    <li>Click <span class="ui">Inspect</span>. Work the checklist, marking each item <strong>Pass</strong>,
+    <strong>Fail</strong> or <strong>N/A</strong>. A Fail reveals a note box &mdash; describe the defect.</li>
+    <li>Record the odometer and fuel level, and add photos if uploads are switched on.</li>
+    <li><span class="ui">Mark passed</span> &mdash; the vehicle becomes sellable stock and leaves the queue. Or
+    <span class="ui">Mark failed</span> &mdash; it stays in the queue for re-inspection.</li>
+  </ol>
+
+  <h3>Pre-delivery inspection</h3>
+  <p>Same form, reached from the <span class="ui">PDI queue</span> once Sales creates a delivery. Passing writes
+  the result back to the delivery so Sales can submit it for approval; failing leaves Sales blocked until
+  you re-inspect.</p>
+
+  <div class="note stop">
+    <span class="lbl">Every item defaults to Pass</span>
+    <p>The form opens with everything already marked Pass, defect notes are optional, and an inspection with
+    failed items can still be marked passed. <strong>The software enforces nothing.</strong> The quality of
+    the record depends entirely on the inspector actually working through each item &mdash; this is the single
+    biggest thing to cover in training and supervision.</p>
+  </div>
+
+  <div class="note warn">
+    <span class="lbl">No &ldquo;saved&rdquo; confirmation</span>
+    <p>After you submit, you land on the vehicle's history page with no success banner. Check that your new
+    inspection card is at the top of the list &mdash; that's your confirmation.</p>
+  </div>
+
+  <p><strong>Supervisors:</strong> checklists live under <span class="ui">Templates</span>, one active template per
+  kind. Ticking a second one active gives no warning but only one will be used &mdash; verify there is exactly
+  one active arrival template and one active PDI template before rollout.</p>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ CASHIER ============ -->
+<section class="app" id="cashier">
+  <div class="app-kicker">05 &middot; Getting paid</div>
+  <h2>Cashier</h2>
+  <p class="purpose">Recording money in, issuing receipts, and balancing the drawer at the end of the day.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Cashiers; managers approve and post</dd></div>
+    <div class="fact"><dt>Default currency</dt><dd>GHS (USD is the base)</dd></div>
+    <div class="fact"><dt>Manager-only</dt><dd>Void, cash-up approval, Posting Bridge</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <h3>Recording a payment</h3>
+  <ol class="steps">
+    <li><span class="ui">+ New Receipt</span>.</li>
+    <li>Search the customer by name, phone or email and select them. A walk-in with no record? Leave it
+    empty and use source <strong>Other</strong> with a note.</li>
+    <li>Choose what the money is for, then pick the specific sale, invoice or counter sale.</li>
+    <li>Enter the amount &mdash; or click the <span class="ui">Fill GHS &hellip;</span> shortcut to use the outstanding balance.</li>
+    <li>Set currency and method.</li>
+    <li>Enter the <strong>reference</strong>. This is <em>required</em> for Mobile Money, bank transfer and cheque &mdash;
+    the MoMo transaction ID, cheque number or transfer reference.</li>
+    <li><span class="ui">Record Receipt</span>. You land on the receipt, where <span class="ui">Print / PDF</span> and
+    <span class="ui">WhatsApp</span> give the customer their copy.</li>
+  </ol>
+
+  <div class="note info">
+    <span class="lbl">Installments go elsewhere for now</span>
+    <p>Choosing <strong>Installment</strong> shows a notice and disables the button. Record installment payments
+    in the Sales app until the credit allocation function ships.</p>
+  </div>
+
+  <h3>End-of-day cash-up</h3>
+  <ol class="steps">
+    <li>At the start of the day: <span class="ui">Cash-Up</span> &rarr; enter the <strong>opening float</strong> &rarr;
+    <span class="ui">Open session</span>. You can only have one open at a time.</li>
+    <li>At close: <span class="ui">Count &amp; close &rarr;</span>. Enter what you <em>physically counted</em> per method
+    and currency.</li>
+    <li>Add a note explaining any difference, then <span class="ui">Close session</span>. The difference between
+    counted and system is your <strong>variance</strong> &mdash; zero shows green, anything else red.</li>
+    <li>A manager opens the closed session and presses <span class="ui">Approve (manager sign-off)</span>.</li>
+  </ol>
+  <p>Only the cashier who opened a session can close it &mdash; not even a manager can do it for you.</p>
+
+  <h3>Voiding a mistake (managers)</h3>
+  <p>Open the receipt &rarr; <span class="ui">Void receipt&hellip;</span> &rarr; type a reason (required) &rarr;
+  <span class="ui">Confirm void</span>. This creates a <em>reversing</em> entry; the original stays on record with a
+  VOIDED badge. Nothing is ever deleted.</p>
+
+  <h3>Reconciling electronic payments</h3>
+  <p>When the MoMo or bank statement arrives: <span class="ui">Reconcile</span> &rarr; set the statement date &rarr; tick
+  every receipt that appears on it &rarr; <span class="ui">Mark selected reconciled</span>. Cash receipts never appear
+  here.</p>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ COLLECTIONS ============ -->
+<section class="app" id="collections">
+  <div class="app-kicker">06 &middot; Getting paid</div>
+  <h2>Collections</h2>
+  <p class="purpose">The working app for chasing overdue customers. Build call lists, log every contact,
+  record promises, apply fees, and take a case through to settlement, restructure or repossession.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Collectors and their supervisors</dd></div>
+    <div class="fact"><dt>Permissions</dt><dd>Flat &mdash; everyone can do everything</dd></div>
+    <div class="fact"><dt>Sees</dt><dd>The whole book, regardless of assignment</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <div class="note info">
+    <span class="lbl">This is the app to work accounts in</span>
+    <p>Collections and Receivables look almost identical and share most screens. <strong>Collections is the
+    fuller one</strong> &mdash; it alone has call lists, promise follow-ups, charges and restructure. Unless you have
+    a specific reason, work here. See the note under <a href="#receivables">Receivables</a>.</p>
+  </div>
+
+  <h3>The daily collections run</h3>
+  <ol class="steps">
+    <li><strong>Dashboard</strong> &mdash; read the arrears aging tiles (1-29 / 30-59 / 60-89 / 90+) and the arrears
+    trend. Filter by collector if you supervise several.</li>
+    <li><strong>Supervisor:</strong> <span class="ui">Worklists</span> &rarr; create a named list, assign a collector,
+    open it, then <span class="ui">Build list</span> to pull in the worst accounts from arrears.</li>
+    <li><strong>Collector:</strong> open your list and press <span class="ui">Work</span> on the first account, then
+    click the customer to open their page.</li>
+    <li>Read the repayment schedule and the <strong>History</strong> &mdash; see what's already been tried before you
+    call.</li>
+    <li>Make contact, then fill <strong>Log collection action</strong>: Call, SMS, Visit, Letter or Field agent.
+    Add the outcome in plain words (&ldquo;no answer&rdquo;, &ldquo;will pay Friday&rdquo;).</li>
+    <li>If they commit to paying, choose <strong>Promise to pay</strong> &mdash; the promised amount and date are both
+    required &mdash; so it lands in the follow-up queue.</li>
+    <li>Back on the list, mark the item <span class="ui">Complete</span> or <span class="ui">Skip</span>.</li>
+  </ol>
+
+  <h3>Promises</h3>
+  <p>A logged promise appears in <span class="ui">Follow-ups</span> as <em>upcoming</em>, becomes <em>due today</em>,
+  then <em>broken</em> if unpaid. Close it with <span class="ui">Kept</span> or <span class="ui">Broken</span> &mdash; the
+  outcome is written back to the account history.</p>
+
+  <h3>Fees, settlement and restructure</h3>
+  <ul class="plain">
+    <li><strong>Charges</strong> &mdash; apply a late fee or other charge with a reason. It feeds the settlement quote.
+    <span class="ui">Waive</span> removes it for goodwill or error.</li>
+    <li><strong>Early settlement</strong> &mdash; the quote is overdue + future + charges &minus; rebate &minus; credit balance.
+    Read it to the customer, take the money, then enter the amount received (it must cover the quote), pick
+    the method, tick the confirmation box and <span class="ui">Post settlement</span>. This creates the receipt
+    and closes the agreement in one step.</li>
+    <li><strong>Restructure</strong> &mdash; re-terms the remaining principal onto a brand-new agreement and closes the
+    current one. Requires new term, rate, frequency, interest method and start date.</li>
+  </ul>
+
+  <h3>Repossession</h3>
+  <ol class="steps">
+    <li>On the customer's page, write the <strong>reason and evidence of collection attempts</strong> (required),
+    tick the confirmation, and press <span class="ui">Flag for repossession</span>.</li>
+    <li>In the <span class="ui">Repossessions</span> queue, advance the case one stage at a time:
+    <span class="ui">Issue notice</span> &rarr; <span class="ui">Mark recovered</span> &rarr; <span class="ui">Move to yard</span>
+    (enter the yard location) &rarr; then either <span class="ui">Return to customer</span> or
+    <span class="ui">Write off</span>.</li>
+  </ol>
+
+  <div class="note stop">
+    <span class="lbl">Mobile money prompts do not reach the customer</span>
+    <p>The <span class="ui">Request pay</span> button and the Mobile Money desk mark a request as &ldquo;prompted&rdquo;
+    without calling any provider &mdash; the customer's phone <strong>does not buzz</strong>. This is waiting on
+    aggregator sign-off. Do not tell a customer to expect a prompt, and do not treat a sent request as a
+    payment attempt.</p>
+  </div>
+
+  <div class="note ok">
+    <span class="lbl">A flagged case now waits for sign-off</span>
+    <p>Flagging no longer makes a case actionable. The row shows
+    <strong>Awaiting GM approval</strong> and there is no <span class="ui">Issue notice</span> button until a
+    General Manager signs off in the <a href="#csa">CSA &amp; WNP</a> app. This is enforced by the system, not
+    by procedure &mdash; the notice cannot be issued without the approval, however the request is made.</p>
+  </div>
+
+  <details class="gloss">
+    <summary>Collections glossary</summary>
+    <div class="gloss-body"><dl>
+      <dt>DPD &mdash; Days Past Due</dt><dd>How many days the oldest unpaid amount is late. Drives the bucket.</dd>
+      <dt>Bucket</dt><dd>The lateness band: current, 1-29, 30-59, 60-89, 90+. Colour-coded green through dark red.</dd>
+      <dt>PAR 30 / 60 / 90</dt><dd>Portfolio At Risk &mdash; the share of the book more than 30, 60 or 90 days late. The core health measure.</dd>
+      <dt>Overdue vs Outstanding</dt><dd>Overdue is the part already late. Outstanding is everything still owed.</dd>
+      <dt>PTP &mdash; Promise to Pay</dt><dd>A commitment to a specific amount on a specific date, tracked for follow-up.</dd>
+      <dt>Credit balance</dt><dd>Customer money on file not yet applied to an installment. It reduces a settlement quote.</dd>
+      <dt>Rebate</dt><dd>The interest discount for settling early &mdash; a share of interest not yet earned.</dd>
+      <dt>Snapshot</dt><dd>The amount and bucket frozen when an account was added to a call list, so the list doesn't shift while you work it.</dd>
+    </dl></div>
+  </details>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ RECEIVABLES ============ -->
+<section class="app" id="receivables">
+  <div class="app-kicker">07 &middot; Getting paid</div>
+  <h2>Receivables</h2>
+  <p class="purpose">A smaller view of the same credit book &mdash; dashboard, worklist, statements, settlements
+  and repossessions. Its unique job is <strong>customer statements</strong>.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Receivables officers</dd></div>
+    <div class="fact"><dt>Overlaps with</dt><dd>Collections &mdash; heavily</dd></div>
+    <div class="fact"><dt>Permissions</dt><dd>Flat &mdash; everyone can do everything</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip part">Duplicated</span></dd></div>
+  </dl>
+
+  <div class="note stop">
+    <span class="lbl">Two apps do nearly the same job</span>
+    <p><strong>Receivables and Collections are the same application, forked.</strong> All ten Receivables
+    screens exist in Collections under identical names, with identical wording. Collections adds five more
+    (call lists, follow-ups, charges, restructure, mobile money) that Receivables does not have.</p>
+    <p>Until this is resolved, the practical rule for staff: <strong>work accounts in Collections</strong>, and
+    use Receivables only for issuing a customer statement. Training people on both as if they were different
+    tools will cause errors &mdash; the same action logged in either app hits the same book.</p>
+  </div>
+
+  <h3>Issuing a customer statement</h3>
+  <ol class="steps">
+    <li><span class="ui">Statements</span> &rarr; find the customer &rarr; click their name.</li>
+    <li>Review <strong>Open items</strong> and <strong>Receipt history</strong>.</li>
+    <li><span class="ui">Download PDF</span>. It opens in the browser so you can print it or send it on
+    WhatsApp. The file is named after the customer.</li>
+  </ol>
+  <p>The statement is headed &ldquo;Statement of Account&rdquo; and covers open receivables across credit, service and
+  parts as at the day you issue it.</p>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ CSA & WNP ============ -->
+<section class="app" id="csa">
+  <div class="app-kicker">08 &middot; Getting paid</div>
+  <h2>CSA &amp; WNP</h2>
+  <p class="purpose">A read-only window on the credit book, plus one job that happens nowhere else:
+  <strong>a manager approving or rejecting a repossession</strong>.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Anyone reviewing credit; managers for sign-off</dd></div>
+    <div class="fact"><dt>You can change</dt><dd>Only a repossession decision</dd></div>
+    <div class="fact"><dt>Everything else</dt><dd>Read-only</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <div class="note info">
+    <span class="lbl">Set expectations before anyone opens this</span>
+    <p>You cannot create a deal, take a payment, log a collection action, record a promise or settle an
+    agreement here. Deals are created in <a href="#sales">Sales</a>, money is receipted in
+    <a href="#cashier">Cashier</a>, and accounts are worked in <a href="#collections">Collections</a>. Staff
+    who aren't told this will hunt for buttons that don't exist.</p>
+  </div>
+
+  <h3>Reviewing a customer</h3>
+  <ol class="steps">
+    <li><span class="ui">Agreements</span> &mdash; accounts in arrears sort to the top automatically. There is no
+    search or filter, so scroll.</li>
+    <li>Click the customer to open <strong>Schedule vs paid</strong> &mdash; one row per installment showing what was
+    due, what was paid, and the status. Overdue rows are tinted red, partial rows amber.</li>
+    <li>Watch for the footnote about unpaid charges &mdash; fees sit outside the installment rows, which is why the
+    totals can look like they disagree.</li>
+  </ol>
+
+  <h3>Approving a repossession (managers)</h3>
+  <ol class="steps">
+    <li>A collections officer flags the case in Collections. It appears here with a red
+    <strong>flagged</strong> badge and their note.</li>
+    <li>Click the customer's name to review the agreement first.</li>
+    <li>Back on <span class="ui">Repossessions</span>, press <span class="ui">Approve</span> or
+    <span class="ui">Reject</span>, add a note if useful, then <span class="ui">Confirm approval</span> /
+    <span class="ui">Confirm rejection</span>.</li>
+  </ol>
+  <p>Approving moves the case to <em>notice issued</em> and records who approved it. There is no undo. The note
+  is optional in the software &mdash; if your policy requires a reason, that's a rule people must follow, not one
+  the app enforces.</p>
+
+  <p>Rejecting closes the case and frees the agreement, so the same customer can be flagged again later if
+  things deteriorate.</p>
+
+  <div class="note ok">
+    <span class="lbl">This screen is the only way a notice gets issued</span>
+    <p>Collections can flag a case but cannot issue the notice. Only a <strong>General Manager</strong> (or an
+    administrator) can approve, and the decision is stamped with their name. Approvals also appear in the
+    <a href="#staff">Staff</a> app's Approvals inbox.</p>
+  </div>
+
+  <p>Anyone without sign-off rights sees the queue but no buttons, with a notice explaining who can decide.</p>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ SERVICE ============ -->
+<section class="app" id="service">
+  <div class="app-kicker">09 &middot; Workshop &amp; stock</div>
+  <h2>Service</h2>
+  <p class="purpose">The workshop. Bookings, job cards, technician time, parts, quotes, invoicing and
+  releasing the vehicle.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Advisors, technicians, workshop managers</dd></div>
+    <div class="fact"><dt>Technicians can't</dt><dd>Change rates or billed hours</dd></div>
+    <div class="fact"><dt>Wall display</dt><dd>Live board, refreshes every 30s</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <h3>The eleven repair-order statuses</h3>
+  <p>Booked &rarr; Checked in &rarr; Diagnosed &rarr; Quoted &rarr; Approved &rarr; In progress &rarr; Awaiting parts &rarr; Completed &rarr;
+  Invoiced &rarr; Paid &rarr; Released. You move one step at a time &mdash; no skipping.</p>
+
+  <h3>A booked customer job</h3>
+  <ol class="steps">
+    <li><span class="ui">Bookings</span> &rarr; <span class="ui">Add booking</span>: customer, vehicle, repair type,
+    date and time, bay, technician. Capacity is checked when you save, so a clash comes back as an error.</li>
+    <li>On the day, open the booking &rarr; <span class="ui">Check in &rarr;</span>. Record mileage, fuel, existing damage,
+    customer items left in the vehicle, condition photos, and the customer's signature on the pad. Then
+    <span class="ui">Check in &amp; open repair order</span> &mdash; this creates the job card and builds the task
+    checklist.</li>
+    <li>Inspect, then advance to <span class="ui">&rarr; Diagnosed</span>.</li>
+    <li>Add labour lines (search the job type &mdash; it fills the description and rate from the rate card) and parts
+    lines.</li>
+    <li><span class="ui">Snapshot current lines &rarr; new quote version</span>, then <span class="ui">&rarr; Quoted</span>.</li>
+    <li>Share the quote with <span class="ui">Copy link</span> or <span class="ui">WhatsApp</span>. The customer taps
+    <span class="ui">&#10003; Approve this quote</span> on their phone &mdash; or you record their verbal approval with
+    <span class="ui">Mark approved</span> and how they said yes. Then <span class="ui">&rarr; Approved</span>.</li>
+    <li>Take the deposit if one is required.</li>
+    <li><span class="ui">&rarr; In progress</span>. Technicians assign themselves tasks and press
+    <span class="ui">Start</span>, <span class="ui">Pause</span> and <span class="ui">Complete</span>.</li>
+    <li>Waiting on a part? <span class="ui">Raise request</span> to Parts, then
+    <span class="ui">&rarr; Awaiting parts</span>; come back once it's issued.</li>
+    <li><span class="ui">&rarr; Completed</span> &rarr; <span class="ui">Generate invoice</span> &rarr;
+    <span class="ui">Record payment</span> &rarr; <span class="ui">&rarr; Released</span>.</li>
+  </ol>
+
+  <div class="note stop">
+    <span class="lbl">Three gates you cannot talk your way past</span>
+    <p>A customer job can't start work without an <strong>approved quote</strong>. A walk-in (customer-owned)
+    vehicle also needs <strong>manager approval</strong> before work starts. And the vehicle cannot be
+    <strong>released</strong> until the invoice is paid in full &mdash; that one is enforced by the database itself.</p>
+  </div>
+
+  <div class="note warn">
+    <span class="lbl">Check which clock you have</span>
+    <p>Clock-on/clock-off on the Workshop jobs screen depends on a database migration that may not be applied.
+    If the <strong>Clock</strong> column shows a dash and a message about pending columns, type the hours into
+    <strong>Actual</strong> and save instead. The Task board timers are separate and do work.</p>
+  </div>
+
+  <details class="gloss">
+    <summary>Service glossary</summary>
+    <div class="gloss-body"><dl>
+      <dt>RO &mdash; Repair Order</dt><dd>The job card, numbered like <code>RO-000123</code>.</dd>
+      <dt>Job line vs Task</dt><dd>A job line is a billable labour item. A task is a checklist step a technician clocks against. The app has both, on different screens.</dd>
+      <dt>Bill to</dt><dd>Customer, Internal (stock reconditioning), or Warranty.</dd>
+      <dt>Internal vs External</dt><dd>Internal is a dealership vehicle. External is a customer-owned walk-in &mdash; and needs manager approval before work starts.</dd>
+      <dt>Issued</dt><dd>The part has physically left the store for this job and stock has come down. Unissued means planned but not yet taken.</dd>
+      <dt>Quote version</dt><dd>A frozen snapshot of the lines. Change the lines, take a new snapshot.</dd>
+      <dt>Actual vs Billed hours</dt><dd>What the technician clocked, versus what the customer pays.</dd>
+      <dt>Net due</dt><dd>Invoice total minus any deposit already applied.</dd>
+    </dl></div>
+  </details>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ PARTS ============ -->
+<section class="app" id="parts">
+  <div class="app-kicker">10 &middot; Workshop &amp; stock</div>
+  <h2>Parts</h2>
+  <p class="purpose">The store. Booking stock in, issuing it to jobs, selling over the counter, handling
+  returns, and counting the shelves.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Parts clerks and the storeman</dd></div>
+    <div class="fact"><dt>Parts created in</dt><dd>Purchasing &mdash; not here</dd></div>
+    <div class="fact"><dt>Prices owned by</dt><dd>Pricing &mdash; not here</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <div class="note info">
+    <span class="lbl">Three numbers people confuse constantly</span>
+    <p><strong>On hand</strong> is what's physically on the shelf. <strong>Allocated</strong> is on hand but already
+    reserved for a job or order. <strong>Available</strong> is on hand minus allocated &mdash; and it's the only one
+    that matters when you're selling or issuing. It turns red at zero.</p>
+  </div>
+
+  <h3>Booking stock in against a purchase order</h3>
+  <ol class="steps">
+    <li><span class="ui">PO Receiving</span> &rarr; open the purchase order.</li>
+    <li>Check every line reads <strong>allocated</strong>. If any says &ldquo;not allocated&rdquo;, stop &mdash; landed cost must be
+    allocated in the Purchasing app first, and receiving is blocked until it is.</li>
+    <li>Enter the quantity received per line (and a VIN per unit for vehicle lines), add a note, then
+    <span class="ui">Post receipt</span>.</li>
+  </ol>
+
+  <h3>Issuing parts to a workshop job</h3>
+  <p>Either wait for Service to raise a request &mdash; <span class="ui">Requests</span> &rarr; <span class="ui">Issue</span> or
+  <span class="ui">Reject</span> &mdash; or push it yourself from <span class="ui">Issue to RO</span> with the part, the
+  RO/job reference and a quantity. Parts with nothing available are greyed out and can't be selected.</p>
+
+  <h3>A counter sale</h3>
+  <ol class="steps">
+    <li><span class="ui">Sale Orders</span> &rarr; <span class="ui">&#65291; New sale order</span>. Enter a customer note (or
+    leave it blank for &ldquo;Walk-in&rdquo;), search and add parts, adjust quantity and price.</li>
+    <li><span class="ui">Create sale order</span>.</li>
+    <li>If any line is a serialised part, open the sale and <span class="ui">Attach</span> a specific serial per
+    unit until each line reads <strong>Ready</strong>.</li>
+    <li>Choose the currency and press <span class="ui">Fulfil / Pick</span>. Stock is issued, the sale completes
+    and a receipt is recorded.</li>
+    <li><span class="ui">Invoice</span> &rarr; <span class="ui">Print / Save PDF</span> for the customer.</li>
+  </ol>
+
+  <h3>Stocktake</h3>
+  <ol class="steps">
+    <li><span class="ui">Stocktake</span> &rarr; <span class="ui">Count sheets</span> &rarr;
+    <span class="ui">Print count sheets</span>. They're grouped by bin.</li>
+    <li>Count the shelves, then type the counts into the <strong>Counted</strong> column. Variances calculate as
+    you go, and blank rows are ignored &mdash; a partial count is fine.</li>
+    <li><span class="ui">Post variances</span>. Each one becomes a stock adjustment.</li>
+    <li>Print the <strong>Variance report</strong> for the manager.</li>
+  </ol>
+
+  <div class="note warn">
+    <span class="lbl">Large adjustments need a manager</span>
+    <p>Manual adjustments above a value threshold are blocked with &ldquo;a manager must approve it&rdquo;. Admins
+    auto-approve their own. The <strong>Approved</strong> column on Recent adjustments shows which is which.</p>
+  </div>
+
+  <p><strong>Read the confirmation dialogs.</strong> Every stock-moving button pops one, and the text spells out
+  exactly what will happen &mdash; &ldquo;Post this receipt? Stock and weighted-average cost will update.&rdquo; Clicking
+  through them blindly is how stock goes wrong.</p>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ PURCHASING ============ -->
+<section class="app" id="purchasing">
+  <div class="app-kicker">11 &middot; Workshop &amp; stock</div>
+  <h2>Purchasing</h2>
+  <p class="purpose">Suppliers, the parts catalogue, purchase orders, and working out what imported stock
+  actually costs once freight and duty are added.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Buyers and the purchasing manager</dd></div>
+    <div class="fact"><dt>Home currency</dt><dd>GHS; suppliers usually foreign</dd></div>
+    <div class="fact"><dt>Receiving happens in</dt><dd>Parts &mdash; not here</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <h3>Raising and placing an order</h3>
+  <ol class="steps">
+    <li><span class="ui">New PO</span> &rarr; supplier, order type, currency (the exchange rate fills itself),
+    expected date &rarr; <span class="ui">Create draft PO</span>.</li>
+    <li>Add the lines: <span class="ui">Add part</span>, <span class="ui">Add vehicle</span>, and
+    <span class="ui">Add charge</span> for freight, duty, clearing or insurance.</li>
+    <li><span class="ui">Mark sent</span> once it's with the supplier, then <span class="ui">Confirm order</span>
+    when they acknowledge.</li>
+    <li><strong>Allocate the landed cost.</strong> Choose <strong>By value</strong> or <strong>By quantity</strong> and
+    press <span class="ui">Allocate</span>. The banner must turn green and read &ldquo;allocated&rdquo;.</li>
+    <li>Goods are then received in the <a href="#parts">Parts app</a>. The PO status updates itself.</li>
+    <li>Once everything has arrived, <span class="ui">Close PO</span>.</li>
+  </ol>
+
+  <div class="note stop">
+    <span class="lbl">Allocation is not optional</span>
+    <p>Nothing can be received until landed cost is allocated &mdash; even on a PO with no charges at all. And
+    <strong>anything that changes the numbers wipes the allocation</strong>: adding a late freight invoice,
+    changing the currency, changing the exchange rate. Re-allocate before receiving the rest, or the store
+    will be blocked.</p>
+  </div>
+
+  <h3>Late charges</h3>
+  <p>A freight or duty invoice that arrives after ordering goes on with <span class="ui">Add late charge</span> on
+  a confirmed or partially-received PO &mdash; then <span class="ui">Re-allocate</span> immediately.</p>
+
+  <h3>Backorders</h3>
+  <p>A short delivery leaves the balance under <span class="ui">Backorders</span>. Either
+  <span class="ui">Receive</span> it when the rest arrives, or <span class="ui">Cancel</span> it with a reason &mdash;
+  the reason is mandatory.</p>
+
+  <div class="note info">
+    <span class="lbl">What locks and when</span>
+    <p>Lines can be edited while a PO is <em>draft</em> or <em>sent</em>. Once <em>confirmed</em>, lines lock and
+    only charges can be added. Only a draft can be deleted &mdash; everything else is cancelled. And a PO can only
+    be closed from <em>received</em>.</p>
+  </div>
+
+  <p>The exchange rate on a PO is locked to the admin rate for most users; only administrators can override
+  it. Rates themselves are set in the <a href="#ops">Operations Hub</a>.</p>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ STAFF ============ -->
+<section class="app" id="staff">
+  <div class="app-kicker">12 &middot; Running the business</div>
+  <h2>Staff</h2>
+  <p class="purpose">People and permissions. Adding staff, deciding which apps they can open, approvals,
+  and commission.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Administrators; everyone for their own profile</dd></div>
+    <div class="fact"><dt>Grants access to</dt><dd>Every app in the group</dd></div>
+    <div class="fact"><dt>Staff are</dt><dd>Deactivated, never deleted</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <div class="note stop">
+    <span class="lbl">Position is not permission</span>
+    <p>A person's <strong>position</strong> (&ldquo;Workshop Foreman&rdquo;) is a job title and grants nothing at all. What
+    they can open is decided entirely by their <strong>access group</strong>. This is the single most
+    misunderstood thing in the system &mdash; changing someone's job title does not change what they can see.</p>
+  </div>
+
+  <h3>Adding someone</h3>
+  <ol class="steps">
+    <li><span class="ui">Invite staff</span>. Only the login email and a temporary password are strictly
+    required; add name, position, phone, branch and hire date too.</li>
+    <li>Choose an <strong>access group</strong> now, or leave it as &ldquo;No group &mdash; no app access&rdquo; and set it later.</li>
+    <li><span class="ui">Create staff member</span>.</li>
+    <li>Give the person their email and temporary password. <strong>They complete their own profile</strong> &mdash;
+    administrators never type someone else's bank details or Ghana Card number.</li>
+  </ol>
+
+  <h3>Changing what someone can open</h3>
+  <ol class="steps">
+    <li><span class="ui">Access groups</span> &rarr; <span class="ui">New group</span> &rarr; name it, tick the apps it should
+    grant &rarr; <span class="ui">Create group</span>. Do this once per job function, not once per person.</li>
+    <li><span class="ui">Roles &amp; access</span> &rarr; find the person &rarr; set their access group &rarr;
+    <span class="ui">Save</span>.</li>
+    <li>Check the <strong>ACCESS</strong> card on their record lists the apps you expect.</li>
+  </ol>
+  <p>Editing a group's app list updates every member immediately &mdash; no per-person rework.</p>
+
+  <h3>Commission</h3>
+  <ol class="steps">
+    <li>Set one rule per role: percent of sale price, percent of margin, or a flat amount per unit. Saving a
+    rule for a role that already has one <em>replaces</em> it.</li>
+    <li>Pick the month and press <span class="ui">Generate / refresh</span>. This reads delivered sales only, and
+    it's safe to re-run &mdash; sellers with no active rule are reported as &ldquo;skipped&rdquo;.</li>
+    <li>Review the Pending tab, tick the rows and <span class="ui">Approve selected</span>. Use
+    <span class="ui">void</span> on anything wrong.</li>
+    <li><span class="ui">Export CSV</span> for the payroll run, then mark the rows paid afterwards.</li>
+  </ol>
+  <p><strong>The system does not pay anyone.</strong> &ldquo;Paid&rdquo; is a record-keeping marker; payroll happens outside.</p>
+
+  <h3>Offboarding</h3>
+  <p>Open their record and press <span class="ui">Deactivate</span>. This revokes all app access and blocks
+  login immediately. Watch for the warning about open sales and unpaid commission &mdash; reassign open sales in
+  the Sales app first. Reactivating is possible, but access must be granted again.</p>
+
+  <div class="note info">
+    <span class="lbl">Safety rails</span>
+    <p>You cannot deactivate your own account, cannot deactivate the last member of the admin group, and
+    cannot move yourself out of the admin group if you're the last admin.</p>
+  </div>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ COMPLIANCE ============ -->
+<section class="app" id="compliance">
+  <div class="app-kicker">13 &middot; Running the business</div>
+  <h2>Compliance</h2>
+  <p class="purpose">Insurance, vehicle documents and business licences &mdash; and an alert engine that warns you
+  before any of them expire.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Compliance officers</dd></div>
+    <div class="fact"><dt>Permissions</dt><dd>Flat &mdash; everyone can do everything</dd></div>
+    <div class="fact"><dt>Alerts run</dt><dd>Nightly, at 30/14/7/0 days</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip part">Check setup</span></dd></div>
+  </dl>
+
+  <div class="note warn">
+    <span class="lbl">Confirm the app has data before training on it</span>
+    <p>The database migration behind this app may not have been applied. If every screen is empty and the
+    insurer list won't populate, the tables don't exist yet &mdash; that's a setup step, not something a user can
+    fix. Check with the development team before running a session on this app.</p>
+  </div>
+
+  <h3>First: add your insurers</h3>
+  <p><span class="ui">Insurers</span> &rarr; <span class="ui">+ Add insurer</span>. No policy can be saved until at
+  least one exists &mdash; the policy form disables its save button and tells you so.</p>
+
+  <h3>Insuring a vehicle</h3>
+  <ol class="steps">
+    <li><span class="ui">Vehicles</span> &rarr; <span class="ui">Add policy</span> (or use the red callout on the
+    dashboard, which links straight from an uninsured vehicle).</li>
+    <li>Search the vehicle by VIN, registration, make or model and pick it.</li>
+    <li>Fill the policy: insurer, policy number, cover type, start and end dates are all required. Premium and
+    the document scan are optional.</li>
+    <li><span class="ui">Save policy</span>. The alert check re-runs immediately.</li>
+  </ol>
+
+  <h3>Filing a vehicle document</h3>
+  <p>Same shape: find the vehicle, choose the type (Roadworthy, DVLA registration, Customs declaration or
+  Other), enter the reference and dates, attach the scan.</p>
+
+  <div class="note stop">
+    <span class="lbl">No expiry date means no alert, ever</span>
+    <p>Only the vehicle is genuinely required when saving a document. If you leave the expiry date blank the
+    record saves happily and <strong>the system will never warn you</strong> about it. Always fill the expiry
+    date.</p>
+  </div>
+
+  <h3>The daily alerts round</h3>
+  <ol class="steps">
+    <li><span class="ui">Alerts</span> &mdash; the sidebar badge shows how many are open.</li>
+    <li>Filter to <strong>Open</strong>, assign an owner with <span class="ui">Assign</span>.</li>
+    <li>Press <span class="ui">Ack</span> to show you've seen it and taken it on.</li>
+    <li>Chase the renewal. Once the new policy or document is filed, press <span class="ui">Resolve</span>.</li>
+  </ol>
+  <p>Alerts appear on their own every night &mdash; nobody creates them by hand. The same alert narrows its window
+  from 30-day to 14-day to 7-day as the date approaches, rather than piling up new ones.</p>
+
+  <div class="note info">
+    <span class="lbl">Uninsured credit vehicles</span>
+    <p>The dashboard shows a red count of vehicles on live credit agreements with no <strong>comprehensive</strong>
+    cover. Company rule: credit vehicles must be insured, so this number should be zero. Third-party cover
+    does not clear it.</p>
+  </div>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ TASKS ============ -->
+<section class="app" id="tasks">
+  <div class="app-kicker">14 &middot; Running the business</div>
+  <h2>Tasks</h2>
+  <p class="purpose">The shared to-do list for the whole company. Everybody has it, and a task can be
+  attached to any record in any app.</p>
+
+  <dl class="facts">
+    <div class="fact"><dt>Who uses it</dt><dd>Everyone &mdash; this app can't be removed</dd></div>
+    <div class="fact"><dt>Anyone can</dt><dd>See and edit any task</dd></div>
+    <div class="fact"><dt>Admin-only</dt><dd>Team Board</dd></div>
+    <div class="fact"><dt>Status</dt><dd><span class="chip live">Live</span></dd></div>
+  </dl>
+
+  <h3>Raising a task</h3>
+  <ol class="steps">
+    <li><span class="ui">New Task</span>. Only the <strong>title</strong> is required.</li>
+    <li>Optionally assign it, set a priority and a due date.</li>
+    <li>To attach it to a real record, choose the type &mdash; customer, credit agreement, sale, repair order,
+    purchase order or vehicle &mdash; then search (type at least two characters) and click the match.</li>
+    <li>Add notes; they post as the first comment on the task.</li>
+    <li><span class="ui">Create task</span>.</li>
+  </ol>
+
+  <h3>Working your list</h3>
+  <p><strong>My Tasks</strong> groups everything assigned to you into Overdue, Due today, Upcoming and No due
+  date. Open a task and press <span class="ui">Start</span>, then <span class="ui">Complete</span> &mdash; or click the
+  circle on any row to jump straight to done. Post progress as comments; commenting automatically makes you
+  a watcher.</p>
+
+  <p>A linked task shows <span class="ui">Open &#8599;</span>, which jumps to that record in whichever app owns it.
+  That's the quickest way to get from &ldquo;chase this customer&rdquo; to the customer's actual account.</p>
+
+  <div class="note warn">
+    <span class="lbl">One editing quirk</span>
+    <p>The Edit screen lets you change the linked record, but that change isn't saved &mdash; only title,
+    description, assignee, due date and priority are. If you attached a task to the wrong record, create a
+    new task rather than trying to re-link it.</p>
+  </div>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<hr class="rule">
+
+<!-- ============ QUIRKS ============ -->
+<section class="app" id="quirks">
+  <div class="app-kicker">Reference</div>
+  <h2>Known quirks</h2>
+  <p class="purpose">Things that will confuse people during training. These are software issues, not user
+  error &mdash; tell staff so they don't waste time.</p>
+
+  <h3>Menu items you can't use</h3>
+  <p>Admin-only sections no longer appear for staff who can't open them. If you don't see
+  <strong>Posting Bridge</strong> in Cashier or <strong>Commissions</strong> in Staff, that's correct &mdash; they are
+  for managers and administrators. And if you follow a link into an app you don't have, the hub now names
+  the app you were refused instead of quietly returning you to the tile grid.</p>
+
+  <h3>&ldquo;No access&rdquo; screens</h3>
+  <p>Each app names itself and gives you the actual remedy: <em>ask an administrator to add this app to your
+  access group</em>. Access always comes from your access group in the <a href="#staff">Staff</a> app &mdash; never
+  from your job title.</p>
+  <p>Tasks is the exception worth knowing. Everyone has Tasks, so being refused there usually means your
+  login isn&apos;t linked to an active staff record, or you tried to open the admin-only Team Board.</p>
+
+  <h3>Features that look live but aren't</h3>
+  <ul class="plain">
+    <li><span class="chip sim">Simulated</span> <strong>Mobile money prompts</strong> (Collections). The request is
+    recorded but no provider is called &mdash; the customer's phone does not ring. Don&apos;t tell a customer to
+    expect a prompt, and don&apos;t treat a sent request as an attempt to pay.</li>
+    <li><span class="chip part">Conditional</span> <strong>Photo and signature uploads</strong> (PDI, Compliance,
+    Service check-in). If storage isn't configured the field is disabled and says so.</li>
+    <li><span class="chip part">Conditional</span> <strong>Clock-on / clock-off</strong> (Service). May be pending a
+    database migration; enter hours manually if so.</li>
+  </ul>
+
+  <h3>Demo data</h3>
+  <p>The CSA &amp; WNP dashboard may still show a yellow <strong>&ldquo;Seed data &mdash; demo book, not real figures&rdquo;</strong>
+  banner. Confirm whether the live cutover has happened before showing that screen to staff, or they'll take
+  the numbers seriously.</p>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+<!-- ============ GLOSSARY ============ -->
+<section class="app" id="glossary">
+  <div class="app-kicker">Reference</div>
+  <h2>Group glossary</h2>
+  <p class="purpose">Terms that mean the same thing everywhere in the system.</p>
+
+  <h4>Contracts and credit</h4>
+  <dl class="gloss-body">
+    <dt>CSA &mdash; Credit Sale Agreement</dt><dd>Customer buys on credit and owns the vehicle, paying in installments.</dd>
+    <dt>WNP &mdash; Work and Pay</dt><dd>Customer works with the vehicle and pays from earnings; ownership transfers at the end. Weekly payments only.</dd>
+    <dt>Installment plan</dt><dd>A saved template of deposit, term, frequency and rate, offered when creating an agreement.</dd>
+    <dt>Grace days</dt><dd>Days past due before a late fee applies.</dd>
+    <dt>Settlement rebate</dt><dd>The share of not-yet-earned interest handed back when a customer pays off early.</dd>
+  </dl>
+
+  <h4>Money</h4>
+  <dl class="gloss-body">
+    <dt>GH&#8373; / GHS</dt><dd>Ghana Cedi. The currency customers pay in. USD is the system's base currency for internal totals.</dd>
+    <dt>Landed cost</dt><dd>What an imported item really costs: supplier price plus freight, duty and clearing, per unit.</dd>
+    <dt>FOB</dt><dd>The supplier's price before shipping.</dd>
+    <dt>WAC &mdash; weighted average cost</dt><dd>The running average unit cost of stock, recalculated each time a receipt is posted.</dd>
+    <dt>Front / Back gross</dt><dd>Margin on the vehicle itself, versus margin from finance and add-on products.</dd>
+  </dl>
+
+  <h4>Arrears</h4>
+  <dl class="gloss-body">
+    <dt>DPD</dt><dd>Days Past Due &mdash; how late the oldest unpaid amount is.</dd>
+    <dt>Bucket</dt><dd>The lateness band: current, 1-29, 30-59, 60-89, 90+.</dd>
+    <dt>PAR 30 / 60 / 90</dt><dd>Portfolio At Risk &mdash; the share of the book more than 30, 60 or 90 days late.</dd>
+    <dt>PTP</dt><dd>Promise to Pay &mdash; a commitment to an amount on a date.</dd>
+  </dl>
+
+  <h4>Operations</h4>
+  <dl class="gloss-body">
+    <dt>PO &mdash; Purchase Order</dt><dd>An order placed on a supplier.</dd>
+    <dt>GRN &mdash; Goods Received Note</dt><dd>The record of stock arriving.</dd>
+    <dt>RO &mdash; Repair Order</dt><dd>A workshop job card.</dd>
+    <dt>PDI</dt><dd>Pre-Delivery Inspection &mdash; the check before a customer takes the vehicle.</dd>
+    <dt>DVLA</dt><dd>The vehicle licensing authority; the DVLA registration number is the number plate.</dd>
+    <dt>KYC</dt><dd>Know Your Customer &mdash; the identity documents held against a customer, chiefly the Ghana Card.</dd>
+  </dl>
+
+  <h4>Access</h4>
+  <dl class="gloss-body">
+    <dt>Access group</dt><dd>The named bundle of apps a person can open. The only thing that grants access.</dd>
+    <dt>Position</dt><dd>A job title. Displayed everywhere, grants nothing.</dd>
+    <dt>SSO</dt><dd>Single sign-on. One login at the hub opens every app you're allowed to use.</dd>
+  </dl>
+  <a class="toplink" href="#start">&uarr; top</a>
+</section>
+
+</div>
+</main>
+</div>
+
+<script>
+(function(){
+  var links = Array.prototype.slice.call(document.querySelectorAll('.rail a[href^="#"]'));
+  var targets = links.map(function(a){
+    return document.getElementById(a.getAttribute('href').slice(1));
+  });
+  function sync(){
+    var best = 0, bestTop = -Infinity;
+    for (var i = 0; i < targets.length; i++){
+      var el = targets[i];
+      if (!el) continue;
+      var top = el.getBoundingClientRect().top - 90;
+      if (top <= 0 && top > bestTop){ bestTop = top; best = i; }
+    }
+    links.forEach(function(a, i){ a.classList.toggle('on', i === best); });
+  }
+  var ticking = false;
+  window.addEventListener('scroll', function(){
+    if (ticking) return;
+    ticking = true;
+    window.requestAnimationFrame(function(){ sync(); ticking = false; });
+  }, {passive:true});
+  sync();
+})();
+</script>
+</body>
+</html>
